@@ -97,6 +97,7 @@ public class SecretKeyGuesser {
     public void start() {
         SecretKey key = new SecretKey();
         String guessedKey = "RRRRRRRRRRRRRRRR";
-        check(guessedKey, key, 0, 0);
+        int newestMatched = key.guess(guessedKey);
+        check(guessedKey, key, 0, newestMatched);
     }
 }
