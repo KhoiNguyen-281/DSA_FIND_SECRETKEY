@@ -56,6 +56,10 @@ public class SecretKeyGuesser {
     //Group implementation to check and process other steps (recursive)
     public static String check(String guessedString, SecretKey key, int idx, int newestMatched) {
 
+        if (newestMatched < 0) {
+            return newestMatched;
+        }
+
         System.out.println("Guessing... " + guessedString);
 
         //Guess the number of matched characters
