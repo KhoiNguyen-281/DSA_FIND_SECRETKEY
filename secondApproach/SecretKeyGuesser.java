@@ -61,12 +61,14 @@ public class SecretKeyGuesser {
             return guessedString;
         }
 
-        System.out.println("Guessing... " + guessedString);
+
 
         if (newestMatched == 16) {
             System.out.println("The correct key is: " + guessedString);
             return guessedString;
         }
+
+        System.out.println("Guessing... " + guessedString);
 
         guessedString = changeNext(guessedString, idx);
         int numOfMatched = key.guess(guessedString);
@@ -89,8 +91,10 @@ public class SecretKeyGuesser {
 
     public void start() {
         SecretKey key = new SecretKey();
+        //Test case when the guessed key is not valid (key contained another letter)
         String guessedKey = "RRRRRRRRRRRRRRRR";
-        int newestMatched = key.guess(guessedKey);
+        int newestMatched =  key.guess(guessedKey);
+
         check(guessedKey, key, 0, newestMatched);
     }
 }
