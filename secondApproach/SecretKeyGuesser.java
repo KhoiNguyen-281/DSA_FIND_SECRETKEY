@@ -57,24 +57,21 @@ public class SecretKeyGuesser {
     public static String check(String guessedString, SecretKey key, int idx, int newestMatched) {
 
         if (newestMatched < 0) {
+            System.out.println("Your key is not valid");
             return guessedString;
         }
 
         System.out.println("Guessing... " + guessedString);
 
-        //Guess the number of matched characters
-        int numOfMatched = key.guess(guessedString);
-
-        //Base case to break the recursion
-        if (numOfMatched == 16) {
+        if (newestMatched == 16) {
             System.out.println("The correct key is: " + guessedString);
             return guessedString;
         }
 
-        // Processing if number of matched less than the newestMatched
+        guessedString = changeNext(guessedString, idx);
+        int numOfMatched = key.guess(guessedString);
+
         if (numOfMatched < newestMatched) {
-            // Change the next character in string to check
-            guessedString = changeNext(guessedString, idx + 1);
             // Revert the current character in string
             guessedString = changeBack(guessedString, idx);
             // Call the method after changing
@@ -83,18 +80,10 @@ public class SecretKeyGuesser {
 
         //Processing if number of matched is greater than the newestMatched
         if (numOfMatched > newestMatched) {
-
             newestMatched = numOfMatched;
-            //Change the next char to check
-            guessedString = changeNext(guessedString, idx + 1);
             // Call the method after changing
             return check(guessedString, key, idx + 1, newestMatched);
         }
-
-        //Processing if number of matched is equal to the newestMatched
-        //Change the current character
-        guessedString = changeNext(guessedString, idx);
-        // Call the method again with the same index
         return check(guessedString, key, idx, newestMatched);
     }
 
