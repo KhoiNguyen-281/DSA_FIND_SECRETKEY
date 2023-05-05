@@ -57,7 +57,7 @@ public class SecretKeyGuesser {
     public static String check(String guessedString, SecretKey key, int idx, int newestMatched) {
 
         if (newestMatched < 0) {
-            return newestMatched;
+            return guessedString;
         }
 
         System.out.println("Guessing... " + guessedString);
