@@ -10,7 +10,7 @@ public class SecretKey {
     public SecretKey() {
         // for the real test, your program will not know this
 //        TTITTTTTTTTTTTTR
-        this.correctKey = "TTTTTTTTTMTTTTTT";
+        this.correctKey = "RRRRRRRRRMITRMIT";
         counter = 0;
     }
 

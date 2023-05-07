@@ -44,7 +44,7 @@ public class SecretKeyGuesser {
     //Group implementation to revert the current character in the string
     public static String changeBack(String current, int idx) {
         char[] curr = current.toCharArray();
-        if (order(curr[idx]) < 3 && order(curr[idx]) > 0) {
+        if (order(curr[idx]) < 3) {
             curr[idx] = charOf(order(curr[idx]) - 1);
             return String.valueOf(curr);
         }
@@ -61,15 +61,12 @@ public class SecretKeyGuesser {
             return guessedString;
         }
 
-
-
         if (newestMatched == 16) {
             System.out.println("The correct key is: " + guessedString);
             return guessedString;
         }
 
         System.out.println("Guessing... " + guessedString);
-
         guessedString = changeNext(guessedString, idx);
         int numOfMatched = key.guess(guessedString);
 
